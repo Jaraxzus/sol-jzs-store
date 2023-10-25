@@ -1,0 +1,15 @@
+[features]
+seeds = false
+skip-lint = false
+[programs.localnet]
+sol_jzs_shop = "2pw2tBNntykTt3E8QkcB6MGyvCm45mxqmTwed7hYnVWp"
+
+[registry]
+url = "http://api.apr.dev"
+
+[provider]
+cluster = "Localnet"
+wallet = "/home/jaraxzus/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
