@@ -14,29 +14,19 @@ use solana_sdk::{
 
 #[tokio::test]
 async fn testing_initialize() {
-    // инициализируем программу
     let mut program = ProgramTest::new(
         "sol_jzs_shop",
         sol_jzs_shop::id(),
         processor!(sol_jzs_shop::entry),
     );
 
-    // чисто прекол, непон
     let system_program = system_program::ID;
     let token_program_id = anchor_spl::token::ID;
     // let rent = solana_program::sysvar::rent::ID;
     // let associated_token_program_id = anchor_spl::associated_token::ID;
-    println!("sys prog: {}", system_program);
-    println!("token_program_id: {}", token_program_id);
-    // println!(
-    //     "{} / {} / {} / {}",
-    //     system_program, token_program_id, rent, associated_token_program_id
-    // );
 
-    // создаем оверна
     let owner = Keypair::new();
 
-    // добовляем аккаунт овнера и бабло
     program.add_account(
         owner.pubkey(),
         Account {
@@ -115,6 +105,4 @@ async fn testing_initialize() {
     println!("{:#?}", result);
     let returned = result.metadata.unwrap().return_data.unwrap().data;
     assert_eq!(returned, &[price as u8]);
-
-    // panic!();
 }
